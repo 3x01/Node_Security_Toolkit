@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "evilscan": "^1.7.5",
+    "node-cmd": "^3.0.0",
+    "node-powershell": "^4.0.0"
+  }
+}

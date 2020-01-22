@@ -12,13 +12,6 @@ ps.addCommand('. ./pentest/powershell/powerup.ps1');
 ps.addCommand('Invoke-AllChecks');
 ps.invoke().then(output => {
     console.log(output);
-    // fs.writeFile(`${LootDir}\\PrivEsc.txt`, output,function(err){
-    //     if(err){
-    //         console.log(err);
-    //     } else {
-    //         console.log(`\nWrote PrivEsc Results to ${LootDir}\\PrivEsc.txt`);
-    //     }
-    // });
     ps.dispose().then(code => {}).catch(error => {}) //console.log("Closed Shell")});
 }).catch(err => {
     console.log(err);

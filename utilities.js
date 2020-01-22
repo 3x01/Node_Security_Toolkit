@@ -41,7 +41,6 @@ let GetRunningProcesses = (LootDir) => {
     ps.addCommand('echo ===================  Services  ==================================');
     ps.addCommand('net start');
     ps.invoke().then(output => {
-        // console.log(output);
         fs.writeFile(`${LootDir}\\RunningProcesses.txt`, output,function(err){
             if(err){
                 console.log(err);
@@ -317,13 +316,13 @@ let CheckPrivEsc = (LootDir) => {
     ps.addCommand('Invoke-AllChecks');
     ps.invoke().then(output => {
         console.log(output);
-        // fs.writeFile(`${LootDir}\\PrivEsc.txt`, output,function(err){
-        //     if(err){
-        //         console.log(err);
-        //     } else {
-        //         console.log(`\nWrote PrivEsc Results to ${LootDir}\\PrivEsc.txt`);
-        //     }
-        // });
+        fs.writeFile(`${LootDir}\\PrivEsc.txt`, output,function(err){
+            if(err){
+                console.log(err);
+            } else {
+                console.log(`\nWrote PrivEsc Results to ${LootDir}\\PrivEsc.txt`);
+            }
+        });
         ps.dispose().then(code => {}).catch(error => {}) //console.log("Closed Shell")});
     }).catch(err => {
         console.log(err);

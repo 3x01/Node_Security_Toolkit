@@ -3,7 +3,7 @@
 ## Things to remember:
 
 * I was drunk when I made this.
-* This is for my own personal enjoyment - F off 
+* This is for my own personal enjoyment - Boredom.
 * Take it, mod it, do whatever you like.
 * I am not responsible for any damage caused if you run the pentest scripts though.
 * The security scripts are useful, and are stolen from GrapheneX 
